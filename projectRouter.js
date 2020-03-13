@@ -16,11 +16,39 @@ const validateProject = (req, res, next) => {
   }
 }
 
+const validateProjectId = (req, res, next) => {
+  const { id } = req.params
+
+  projectDb
+    .get(id)
+    .then(project => {
+      if (project) {
+        next()
+      } else {
+        res.status(404).json({
+          message: 'The project with the specified ID does not exist.'
+        })
+      }
+    })
+    .catch(next)
+}
+
 router.get('/', (_, res, next) => {
   projectDb
     .get()
     .then(projects => {
       res.status(200).send(projects)
+    })
+    .catch(next)
+})
+
+router.get('/:id/actions', validateProjectId, (req, res, next) => {
+  const { id } = req.params
+
+  projectDb
+    .getProjectActions(id)
+    .then(actions => {
+      res.status(200).json(actions)
     })
     .catch(next)
 })
