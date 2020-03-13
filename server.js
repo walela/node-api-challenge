@@ -3,6 +3,7 @@ const cors = require('cors')
 const helmet = require('helmet')
 
 const projectRouter = require('./projectRouter')
+const actionRouter = require('./actionRouter')
 
 const server = express()
 
@@ -17,6 +18,7 @@ server.use(express.json())
 server.use(cors())
 server.use(logger)
 server.use('/api/projects', projectRouter)
+server.use('/api/actions', actionRouter)
 
 server.get('/', (_, res) => {
   res.send('<h1>Hello, there!</h1>')
