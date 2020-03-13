@@ -4,6 +4,10 @@
 # VSCode settings
 .vscode/
 
+dist/
+
+.cache/
+
 # Logs
 logs
 *.log
