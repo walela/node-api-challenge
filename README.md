@@ -56,7 +56,7 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
     2xx status codes
 
-- [ ] How can we partition our application into sub-applications?
+- [x] How can we partition our application into sub-applications?
 
     By splitting it into smaller router-based apps
 
